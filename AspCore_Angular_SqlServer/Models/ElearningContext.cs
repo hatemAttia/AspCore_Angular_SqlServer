@@ -51,7 +51,7 @@ namespace AspCore_Angular_SqlServer.Models
 
                 entity.Property(e => e.Title)
                     .HasColumnName("title")
-                    .HasMaxLength(10)
+                    .HasMaxLength(200)
                     .IsFixedLength();
 
                 entity.HasOne(d => d.Matiere)
@@ -72,7 +72,7 @@ namespace AspCore_Angular_SqlServer.Models
 
                 entity.Property(e => e.Title)
                     .HasColumnName("title")
-                    .HasMaxLength(50)
+                    .HasMaxLength(200)
                     .IsUnicode(false);
 
                 entity.Property(e => e.Url)
@@ -124,27 +124,27 @@ namespace AspCore_Angular_SqlServer.Models
 
                 entity.Property(e => e.Email)
                     .HasColumnName("email")
-                    .HasMaxLength(50)
+                    .HasMaxLength(200)
                     .IsUnicode(false);
 
                 entity.Property(e => e.Image)
                     .HasColumnName("image")
-                    .HasMaxLength(50)
+                    .HasMaxLength(200)
                     .IsUnicode(false);
 
                 entity.Property(e => e.Nom)
                     .HasColumnName("nom")
-                    .HasMaxLength(50)
+                    .HasMaxLength(200)
                     .IsUnicode(false);
 
                 entity.Property(e => e.Prenom)
                     .HasColumnName("prenom")
-                    .HasMaxLength(50)
+                    .HasMaxLength(200)
                     .IsUnicode(false);
 
                 entity.Property(e => e.Specialite)
                     .HasColumnName("specialite")
-                    .HasMaxLength(50)
+                    .HasMaxLength(200)
                     .IsUnicode(false);
 
                 entity.Property(e => e.Tel).HasColumnName("tel");
@@ -164,7 +164,7 @@ namespace AspCore_Angular_SqlServer.Models
 
                 entity.Property(e => e.Titre)
                     .HasColumnName("titre")
-                    .HasMaxLength(50)
+                    .HasMaxLength(200)
                     .IsUnicode(false);
 
                 entity.HasOne(d => d.Chapitre)
@@ -208,7 +208,7 @@ namespace AspCore_Angular_SqlServer.Models
 
                 entity.Property(e => e.Title)
                     .HasColumnName("title")
-                    .HasMaxLength(10)
+                    .HasMaxLength(200)
                     .IsFixedLength();
 
                 entity.HasOne(d => d.Niveau)
@@ -225,7 +225,7 @@ namespace AspCore_Angular_SqlServer.Models
 
                 entity.Property(e => e.Title)
                     .HasColumnName("title")
-                    .HasMaxLength(50)
+                    .HasMaxLength(200)
                     .IsUnicode(false);
 
                 entity.HasOne(d => d.Section)
@@ -240,7 +240,7 @@ namespace AspCore_Angular_SqlServer.Models
 
                 entity.Property(e => e.Title)
                     .HasColumnName("title")
-                    .HasMaxLength(50)
+                    .HasMaxLength(200)
                     .IsUnicode(false);
             });
 
@@ -256,7 +256,7 @@ namespace AspCore_Angular_SqlServer.Models
 
                 entity.Property(e => e.Title)
                     .HasColumnName("title")
-                    .HasMaxLength(50)
+                    .HasMaxLength(200)
                     .IsUnicode(false);
 
                 entity.Property(e => e.Url)
