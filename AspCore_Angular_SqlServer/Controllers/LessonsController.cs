@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using AspCore_Angular_SqlServer.Models;
+using System.Diagnostics;
 
 namespace AspCore_Angular_SqlServer.Controllers
 {
@@ -24,14 +25,21 @@ namespace AspCore_Angular_SqlServer.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Lesson>>> GetLesson()
         {
-            return await _context.Lesson.ToListAsync();
+            var lesson = await _context.Lesson.Include(x=>x.Ensegnant).Include(x => x.LessonEleve).Include(x => x.Video).Include(x => x.Document).Include(x => x.Chapitre).ToListAsync();
+         
+            return lesson;
         }
+       
 
-        // GET: api/Lessons/5
-        [HttpGet("{id}")]
+       // GET: api/Lessons/5
+       [HttpGet("{id}")]
         public async Task<ActionResult<Lesson>> GetLesson(int id)
         {
             var lesson = await _context.Lesson.FindAsync(id);
+            var teacher = await _context.Enseignant.FindAsync(lesson.EnsegnantId);
+            var chapitre = await _context.Chapitre.FindAsync(lesson.ChapitreId);
+            //var video = await _context.Video.FindAsync(p => p.LessonId == id);
+            //var document = await _context.Document.FindAsync(lesson.Document);
 
             if (lesson == null)
             {
@@ -95,7 +103,6 @@ namespace AspCore_Angular_SqlServer.Controllers
                     throw;
                 }
             }
-
             return CreatedAtAction("GetLesson", new { id = lesson.Id }, lesson);
         }
 
@@ -111,7 +118,6 @@ namespace AspCore_Angular_SqlServer.Controllers
 
             _context.Lesson.Remove(lesson);
             await _context.SaveChangesAsync();
-
             return lesson;
         }
 

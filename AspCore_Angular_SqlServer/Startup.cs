@@ -11,6 +11,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Newtonsoft.Json.Serialization;
 
 namespace AspCore_Angular_SqlServer
 {
@@ -26,9 +27,18 @@ namespace AspCore_Angular_SqlServer
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(c =>
+            {
+                c.AddPolicy("AllowOrigin", option => option.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+            });
             services.AddControllers();
             services.AddSwaggerGen();
+            services.AddControllersWithViews().AddNewtonsoftJson(options =>
+             options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore)
+                 .AddNewtonsoftJson(options => options.SerializerSettings.ContractResolver
+                 = new DefaultContractResolver());
 
+            services.AddControllers();
             var connectionString = Configuration.GetConnectionString("MyDB");
             services.AddDbContext<ElearningContext>(options => options.UseSqlServer(connectionString));
         }
