@@ -24,7 +24,7 @@ namespace AspCore_Angular_SqlServer.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Niveau>>> GetNiveau()
         {
-            return await _context.Niveau.ToListAsync();
+            return await _context.Niveau.Include(x => x.Section).ToListAsync();
         }
 
         // GET: api/Niveaux/5
