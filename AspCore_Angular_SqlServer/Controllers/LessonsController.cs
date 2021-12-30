@@ -87,6 +87,10 @@ namespace AspCore_Angular_SqlServer.Controllers
         [HttpPost]
         public async Task<ActionResult<Lesson>> PostLesson(Lesson lesson)
         {
+
+            var id = _context.Lesson.Count();
+
+            lesson.Id = id + 1;
             _context.Lesson.Add(lesson);
             try
             {

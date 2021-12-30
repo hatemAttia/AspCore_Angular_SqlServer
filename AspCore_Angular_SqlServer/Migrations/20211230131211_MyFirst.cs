@@ -2,7 +2,7 @@
 
 namespace AspCore_Angular_SqlServer.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class MyFirst : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -28,12 +28,12 @@ namespace AspCore_Angular_SqlServer.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false),
-                    nom = table.Column<string>(unicode: false, maxLength: 50, nullable: true),
-                    prenom = table.Column<string>(unicode: false, maxLength: 50, nullable: true),
-                    email = table.Column<string>(unicode: false, maxLength: 50, nullable: true),
+                    nom = table.Column<string>(unicode: false, maxLength: 200, nullable: true),
+                    prenom = table.Column<string>(unicode: false, maxLength: 200, nullable: true),
+                    email = table.Column<string>(unicode: false, maxLength: 200, nullable: true),
                     tel = table.Column<int>(nullable: true),
-                    specialite = table.Column<string>(unicode: false, maxLength: 50, nullable: true),
-                    image = table.Column<string>(unicode: false, maxLength: 50, nullable: true)
+                    specialite = table.Column<string>(unicode: false, maxLength: 200, nullable: true),
+                    image = table.Column<string>(unicode: false, maxLength: 200, nullable: true)
                 },
                 constraints: table =>
                 {
@@ -45,7 +45,7 @@ namespace AspCore_Angular_SqlServer.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false),
-                    title = table.Column<string>(unicode: false, maxLength: 50, nullable: true)
+                    title = table.Column<string>(unicode: false, maxLength: 200, nullable: true)
                 },
                 constraints: table =>
                 {
@@ -57,7 +57,7 @@ namespace AspCore_Angular_SqlServer.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false),
-                    title = table.Column<string>(unicode: false, maxLength: 50, nullable: true),
+                    title = table.Column<string>(unicode: false, maxLength: 200, nullable: true),
                     sectionId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
@@ -76,7 +76,7 @@ namespace AspCore_Angular_SqlServer.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false),
-                    title = table.Column<string>(fixedLength: true, maxLength: 10, nullable: true),
+                    title = table.Column<string>(fixedLength: true, maxLength: 200, nullable: true),
                     niveauId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
@@ -95,7 +95,7 @@ namespace AspCore_Angular_SqlServer.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false),
-                    title = table.Column<string>(fixedLength: true, maxLength: 10, nullable: true),
+                    title = table.Column<string>(fixedLength: true, maxLength: 200, nullable: true),
                     matiereId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
@@ -114,7 +114,7 @@ namespace AspCore_Angular_SqlServer.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false),
-                    titre = table.Column<string>(unicode: false, maxLength: 50, nullable: true),
+                    titre = table.Column<string>(unicode: false, maxLength: 200, nullable: true),
                     descrption = table.Column<string>(type: "text", nullable: true),
                     chapitreId = table.Column<int>(nullable: true),
                     ensegnantId = table.Column<int>(nullable: true)
@@ -141,7 +141,7 @@ namespace AspCore_Angular_SqlServer.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false),
-                    title = table.Column<string>(unicode: false, maxLength: 50, nullable: true),
+                    title = table.Column<string>(unicode: false, maxLength: 200, nullable: true),
                     url = table.Column<string>(type: "text", nullable: true),
                     description = table.Column<string>(type: "text", nullable: true),
                     lessonId = table.Column<int>(nullable: true)
@@ -187,7 +187,7 @@ namespace AspCore_Angular_SqlServer.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false),
-                    title = table.Column<string>(unicode: false, maxLength: 50, nullable: true),
+                    title = table.Column<string>(unicode: false, maxLength: 200, nullable: true),
                     url = table.Column<string>(type: "text", nullable: true),
                     descrption = table.Column<string>(type: "text", nullable: true),
                     lessonId = table.Column<int>(nullable: true)

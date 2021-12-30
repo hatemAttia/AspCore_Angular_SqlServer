@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AspCore_Angular_SqlServer.Migrations
 {
     [DbContext(typeof(ElearningContext))]
-    [Migration("20211222145150_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20211230131211_MyFirst")]
+    partial class MyFirst
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -32,9 +32,9 @@ namespace AspCore_Angular_SqlServer.Migrations
 
                     b.Property<string>("Title")
                         .HasColumnName("title")
-                        .HasColumnType("nchar(10)")
+                        .HasColumnType("nchar(200)")
                         .IsFixedLength(true)
-                        .HasMaxLength(10);
+                        .HasMaxLength(200);
 
                     b.HasKey("Id");
 
@@ -58,8 +58,8 @@ namespace AspCore_Angular_SqlServer.Migrations
 
                     b.Property<string>("Title")
                         .HasColumnName("title")
-                        .HasColumnType("varchar(50)")
-                        .HasMaxLength(50)
+                        .HasColumnType("varchar(200)")
+                        .HasMaxLength(200)
                         .IsUnicode(false);
 
                     b.Property<string>("Url")
@@ -124,32 +124,32 @@ namespace AspCore_Angular_SqlServer.Migrations
 
                     b.Property<string>("Email")
                         .HasColumnName("email")
-                        .HasColumnType("varchar(50)")
-                        .HasMaxLength(50)
+                        .HasColumnType("varchar(200)")
+                        .HasMaxLength(200)
                         .IsUnicode(false);
 
                     b.Property<string>("Image")
                         .HasColumnName("image")
-                        .HasColumnType("varchar(50)")
-                        .HasMaxLength(50)
+                        .HasColumnType("varchar(200)")
+                        .HasMaxLength(200)
                         .IsUnicode(false);
 
                     b.Property<string>("Nom")
                         .HasColumnName("nom")
-                        .HasColumnType("varchar(50)")
-                        .HasMaxLength(50)
+                        .HasColumnType("varchar(200)")
+                        .HasMaxLength(200)
                         .IsUnicode(false);
 
                     b.Property<string>("Prenom")
                         .HasColumnName("prenom")
-                        .HasColumnType("varchar(50)")
-                        .HasMaxLength(50)
+                        .HasColumnType("varchar(200)")
+                        .HasMaxLength(200)
                         .IsUnicode(false);
 
                     b.Property<string>("Specialite")
                         .HasColumnName("specialite")
-                        .HasColumnType("varchar(50)")
-                        .HasMaxLength(50)
+                        .HasColumnType("varchar(200)")
+                        .HasMaxLength(200)
                         .IsUnicode(false);
 
                     b.Property<int?>("Tel")
@@ -180,8 +180,8 @@ namespace AspCore_Angular_SqlServer.Migrations
 
                     b.Property<string>("Titre")
                         .HasColumnName("titre")
-                        .HasColumnType("varchar(50)")
-                        .HasMaxLength(50)
+                        .HasColumnType("varchar(200)")
+                        .HasMaxLength(200)
                         .IsUnicode(false);
 
                     b.HasKey("Id");
@@ -226,9 +226,9 @@ namespace AspCore_Angular_SqlServer.Migrations
 
                     b.Property<string>("Title")
                         .HasColumnName("title")
-                        .HasColumnType("nchar(10)")
+                        .HasColumnType("nchar(200)")
                         .IsFixedLength(true)
-                        .HasMaxLength(10);
+                        .HasMaxLength(200);
 
                     b.HasKey("Id");
 
@@ -248,8 +248,8 @@ namespace AspCore_Angular_SqlServer.Migrations
 
                     b.Property<string>("Title")
                         .HasColumnName("title")
-                        .HasColumnType("varchar(50)")
-                        .HasMaxLength(50)
+                        .HasColumnType("varchar(200)")
+                        .HasMaxLength(200)
                         .IsUnicode(false);
 
                     b.HasKey("Id");
@@ -266,8 +266,8 @@ namespace AspCore_Angular_SqlServer.Migrations
 
                     b.Property<string>("Title")
                         .HasColumnName("title")
-                        .HasColumnType("varchar(50)")
-                        .HasMaxLength(50)
+                        .HasColumnType("varchar(200)")
+                        .HasMaxLength(200)
                         .IsUnicode(false);
 
                     b.HasKey("Id");
@@ -290,8 +290,8 @@ namespace AspCore_Angular_SqlServer.Migrations
 
                     b.Property<string>("Title")
                         .HasColumnName("title")
-                        .HasColumnType("varchar(50)")
-                        .HasMaxLength(50)
+                        .HasColumnType("varchar(200)")
+                        .HasMaxLength(200)
                         .IsUnicode(false);
 
                     b.Property<string>("Url")

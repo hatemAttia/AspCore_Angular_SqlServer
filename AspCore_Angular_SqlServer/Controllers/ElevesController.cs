@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using AspCore_Angular_SqlServer.Models;
+using Microsoft.AspNetCore.Hosting;
+using System.IO;
 
 namespace AspCore_Angular_SqlServer.Controllers
 {
@@ -14,10 +16,13 @@ namespace AspCore_Angular_SqlServer.Controllers
     public class ElevesController : ControllerBase
     {
         private readonly ElearningContext _context;
+        private readonly IWebHostEnvironment _webHostEnvironment;
 
-        public ElevesController(ElearningContext context)
+        public ElevesController(ElearningContext context,
+            IWebHostEnvironment webHostEnvironment)
         {
             _context = context;
+            _webHostEnvironment = webHostEnvironment;
         }
 
         // GET: api/Eleves
@@ -79,7 +84,20 @@ namespace AspCore_Angular_SqlServer.Controllers
         [HttpPost]
         public async Task<ActionResult<Eleve>> PostEleve(Eleve eleve)
         {
+
+            var id = _context.Eleve.Count();
+
+            eleve.Id = id + 1;
             _context.Eleve.Add(eleve);
+            /*
+            if (eleve.Image != null)
+            {
+                string folder = "images/imgEleve";
+                folder += eleve.Image.FileName + Guid.NewGuid().ToString();
+                string serverFolder = Path.Combine(_webHostEnvironment.WebRootPath, folder);
+              await  eleve.Image.CopyToAsync(new FileStream(serverFolder, FileMode.Create));
+            } */
+           
             try
             {
                 await _context.SaveChangesAsync();

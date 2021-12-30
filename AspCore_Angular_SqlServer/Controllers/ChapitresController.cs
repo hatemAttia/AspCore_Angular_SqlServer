@@ -79,6 +79,9 @@ namespace AspCore_Angular_SqlServer.Controllers
         [HttpPost]
         public async Task<ActionResult<Chapitre>> PostChapitre(Chapitre chapitre)
         {
+            var id = _context.Chapitre.Count();
+
+            chapitre.Id = id + 1;
             _context.Chapitre.Add(chapitre);
             try
             {

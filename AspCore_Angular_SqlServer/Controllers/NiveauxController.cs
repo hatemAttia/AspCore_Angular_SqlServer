@@ -79,6 +79,9 @@ namespace AspCore_Angular_SqlServer.Controllers
         [HttpPost]
         public async Task<ActionResult<Niveau>> PostNiveau(Niveau niveau)
         {
+            var id = _context.Niveau.Count();
+
+            niveau.Id = id + 1;
             _context.Niveau.Add(niveau);
             try
             {
