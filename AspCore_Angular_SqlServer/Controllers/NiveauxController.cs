@@ -24,7 +24,7 @@ namespace AspCore_Angular_SqlServer.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Niveau>>> GetNiveau()
         {
-            return await _context.Niveau.ToListAsync();
+            return await _context.Niveau.Include(x => x.Section).ToListAsync();
         }
 
         // GET: api/Niveaux/5
@@ -79,6 +79,9 @@ namespace AspCore_Angular_SqlServer.Controllers
         [HttpPost]
         public async Task<ActionResult<Niveau>> PostNiveau(Niveau niveau)
         {
+            var id = _context.Niveau.Count();
+
+            niveau.Id = id + 1;
             _context.Niveau.Add(niveau);
             try
             {

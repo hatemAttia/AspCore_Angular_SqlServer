@@ -79,6 +79,9 @@ namespace AspCore_Angular_SqlServer.Controllers
         [HttpPost]
         public async Task<ActionResult<Video>> PostVideo(Video video)
         {
+            var id = _context.Video.Count();
+
+            video.Id = id + 1;
             _context.Video.Add(video);
             try
             {

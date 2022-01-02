@@ -2,7 +2,7 @@
 
 namespace AspCore_Angular_SqlServer.Migrations
 {
-    public partial class MyFirs1 : Migration
+    public partial class MySeconde1 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -11,12 +11,14 @@ namespace AspCore_Angular_SqlServer.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false),
-                    nom = table.Column<string>(unicode: false, maxLength: 200, nullable: true),
-                    prenom = table.Column<string>(unicode: false, maxLength: 200, nullable: true),
-                    niveau = table.Column<string>(unicode: false, maxLength: 200, nullable: true),
+                    nom = table.Column<string>(unicode: false, maxLength: 50, nullable: true),
+                    prenom = table.Column<string>(unicode: false, maxLength: 50, nullable: true),
+                    niveau = table.Column<string>(unicode: false, maxLength: 50, nullable: true),
+                    password = table.Column<string>(nullable: true),
+                    Token = table.Column<string>(nullable: true),
                     tel = table.Column<int>(nullable: true),
-                    email = table.Column<string>(unicode: false, maxLength: 200, nullable: true),
-                    image = table.Column<string>(unicode: false, maxLength: 200, nullable: true)
+                    email = table.Column<string>(unicode: false, maxLength: 50, nullable: true),
+                    image = table.Column<string>(unicode: false, maxLength: 50, nullable: true)
                 },
                 constraints: table =>
                 {

@@ -79,6 +79,10 @@ namespace AspCore_Angular_SqlServer.Controllers
         [HttpPost]
         public async Task<ActionResult<Matiere>> PostMatiere(Matiere matiere)
         {
+
+            var id = _context.Matiere.Count();
+
+            matiere.Id = id + 1;
             _context.Matiere.Add(matiere);
             try
             {

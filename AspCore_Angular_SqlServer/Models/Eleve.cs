@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 // Code scaffolded by EF Core assumes nullable reference types (NRTs) are not used or disabled.
 // If you have enabled NRTs for your project, then un-comment the following line:
@@ -13,14 +15,26 @@ namespace AspCore_Angular_SqlServer.Models
         {
             LessonEleve = new HashSet<LessonEleve>();
         }
-
+     
         public int Id { get; set; }
+       
         public string Nom { get; set; }
+     
         public string Prenom { get; set; }
         public string Niveau { get; set; }
+        
+
+        public string password { get; set; }
+
+        public string Token { get; set; }
+
         public int? Tel { get; set; }
+
         public string Email { get; set; }
-        public string Image { get; set; }
+
+       /* [Display(Name="choose your photo")]
+        [Required] */
+        public string Image { get; set; } 
 
         public virtual ICollection<LessonEleve> LessonEleve { get; set; }
     }

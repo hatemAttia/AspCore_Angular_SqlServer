@@ -79,6 +79,10 @@ namespace AspCore_Angular_SqlServer.Controllers
         [HttpPost]
         public async Task<ActionResult<Document>> PostDocument(Document document)
         {
+
+            var id = _context.Document.Count();
+
+            document.Id = id + 1;
             _context.Document.Add(document);
             try
             {
