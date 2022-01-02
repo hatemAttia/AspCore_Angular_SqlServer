@@ -110,6 +110,12 @@ namespace AspCore_Angular_SqlServer.Migrations
                         .HasColumnName("tel")
                         .HasColumnType("int");
 
+                    b.Property<string>("Token")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("password")
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("Id");
 
                     b.ToTable("Eleve");

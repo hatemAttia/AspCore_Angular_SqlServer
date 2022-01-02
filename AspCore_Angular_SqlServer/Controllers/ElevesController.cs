@@ -97,7 +97,7 @@ namespace AspCore_Angular_SqlServer.Controllers
                 string serverFolder = Path.Combine(_webHostEnvironment.WebRootPath, folder);
               await  eleve.Image.CopyToAsync(new FileStream(serverFolder, FileMode.Create));
             } */
-           
+
             try
             {
                 await _context.SaveChangesAsync();

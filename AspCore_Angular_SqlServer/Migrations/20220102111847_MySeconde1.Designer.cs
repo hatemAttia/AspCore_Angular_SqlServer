@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AspCore_Angular_SqlServer.Migrations
 {
     [DbContext(typeof(ElearningContext))]
-    [Migration("20211230131211_MyFirst")]
-    partial class MyFirst
+    [Migration("20220102111847_MySeconde1")]
+    partial class MySeconde1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -111,6 +111,12 @@ namespace AspCore_Angular_SqlServer.Migrations
                     b.Property<int?>("Tel")
                         .HasColumnName("tel")
                         .HasColumnType("int");
+
+                    b.Property<string>("Token")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("password")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 

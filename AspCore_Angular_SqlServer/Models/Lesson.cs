@@ -29,3 +29,4 @@ namespace AspCore_Angular_SqlServer.Models
         public virtual ICollection<Video> Video { get; set; }
     }
 }
+
