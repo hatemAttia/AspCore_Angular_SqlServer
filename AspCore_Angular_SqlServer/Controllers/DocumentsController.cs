@@ -80,7 +80,7 @@ namespace AspCore_Angular_SqlServer.Controllers
         public async Task<ActionResult<Document>> PostDocument(Document document)
         {
 
-            var id = _context.Document.Count();
+            var id = _context.Document.Max(e => e.Id);
 
             document.Id = id + 1;
             _context.Document.Add(document);

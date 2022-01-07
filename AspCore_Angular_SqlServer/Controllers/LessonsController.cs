@@ -38,9 +38,7 @@ namespace AspCore_Angular_SqlServer.Controllers
             var lesson = await _context.Lesson.FindAsync(id);
             var teacher = await _context.Enseignant.FindAsync(lesson.EnsegnantId);
             var chapitre = await _context.Chapitre.FindAsync(lesson.ChapitreId);
-            //var video = await _context.Video.FindAsync(p => p.LessonId == id);
-            //var document = await _context.Document.FindAsync(lesson.Document);
-
+            lesson.Video = null;
             if (lesson == null)
             {
                 return NotFound();
@@ -88,8 +86,7 @@ namespace AspCore_Angular_SqlServer.Controllers
         public async Task<ActionResult<Lesson>> PostLesson(Lesson lesson)
         {
 
-            var id = _context.Lesson.Count();
-
+            var id = _context.Lesson.Max(e => e.Id);
             lesson.Id = id + 1;
             _context.Lesson.Add(lesson);
             try

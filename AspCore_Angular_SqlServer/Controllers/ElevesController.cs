@@ -85,12 +85,12 @@ namespace AspCore_Angular_SqlServer.Controllers
         public async Task<ActionResult<Eleve>> PostEleve(Eleve eleve)
         {
 
-            var id = _context.Eleve.Count();
+            var id = _context.Eleve.Max(e => e.Id);
 
             eleve.Id = id + 1;
             _context.Eleve.Add(eleve);
-            /*
-            if (eleve.Image != null)
+            
+          /*  if (eleve.Image != null)
             {
                 string folder = "images/imgEleve";
                 folder += eleve.Image.FileName + Guid.NewGuid().ToString();

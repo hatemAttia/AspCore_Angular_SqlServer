@@ -11,48 +11,48 @@ namespace AspCore_Angular_SqlServer.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class MatieresController : ControllerBase
+    public class LessonElevesController : ControllerBase
     {
         private readonly ElearningContext _context;
 
-        public MatieresController(ElearningContext context)
+        public LessonElevesController(ElearningContext context)
         {
             _context = context;
         }
 
-        // GET: api/Matieres
+        // GET: api/LessonEleves1
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Matiere>>> GetMatiere()
+        public async Task<ActionResult<IEnumerable<LessonEleve>>> GetLessonEleve()
         {
-            return await _context.Matiere.ToListAsync();
+            return await _context.LessonEleve.ToListAsync();
         }
 
-        // GET: api/Matieres/5
+        // GET: api/LessonEleves1/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Matiere>> GetMatiere(int id)
+        public async Task<ActionResult<LessonEleve>> GetLessonEleve(int id)
         {
-            var matiere = await _context.Matiere.FindAsync(id);
+            var lessonEleve = await _context.LessonEleve.FindAsync(id);
 
-            if (matiere == null)
+            if (lessonEleve == null)
             {
                 return NotFound();
             }
 
-            return matiere;
+            return lessonEleve;
         }
 
-        // PUT: api/Matieres/5
+        // PUT: api/LessonEleves1/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutMatiere(int id, Matiere matiere)
+        public async Task<IActionResult> PutLessonEleve(int id, LessonEleve lessonEleve)
         {
-            if (id != matiere.Id)
+            if (id != lessonEleve.Id)
             {
                 return BadRequest();
             }
 
-            _context.Entry(matiere).State = EntityState.Modified;
+            _context.Entry(lessonEleve).State = EntityState.Modified;
 
             try
             {
@@ -60,7 +60,7 @@ namespace AspCore_Angular_SqlServer.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!MatiereExists(id))
+                if (!LessonEleveExists(id))
                 {
                     return NotFound();
                 }
@@ -73,24 +73,20 @@ namespace AspCore_Angular_SqlServer.Controllers
             return NoContent();
         }
 
-        // POST: api/Matieres
+        // POST: api/LessonEleves1
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
-        public async Task<ActionResult<Matiere>> PostMatiere(Matiere matiere)
+        public async Task<ActionResult<LessonEleve>> PostLessonEleve(LessonEleve lessonEleve)
         {
-            var id = _context.Matiere.Max(e => e.Id);
-
-
-            matiere.Id = id + 1;
-            _context.Matiere.Add(matiere);
+            _context.LessonEleve.Add(lessonEleve);
             try
             {
                 await _context.SaveChangesAsync();
             }
             catch (DbUpdateException)
             {
-                if (MatiereExists(matiere.Id))
+                if (LessonEleveExists(lessonEleve.Id))
                 {
                     return Conflict();
                 }
@@ -100,28 +96,28 @@ namespace AspCore_Angular_SqlServer.Controllers
                 }
             }
 
-            return CreatedAtAction("GetMatiere", new { id = matiere.Id }, matiere);
+            return CreatedAtAction("GetLessonEleve", new { id = lessonEleve.Id }, lessonEleve);
         }
 
-        // DELETE: api/Matieres/5
+        // DELETE: api/LessonEleves1/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<Matiere>> DeleteMatiere(int id)
+        public async Task<ActionResult<LessonEleve>> DeleteLessonEleve(int id)
         {
-            var matiere = await _context.Matiere.FindAsync(id);
-            if (matiere == null)
+            var lessonEleve = await _context.LessonEleve.FindAsync(id);
+            if (lessonEleve == null)
             {
                 return NotFound();
             }
 
-            _context.Matiere.Remove(matiere);
+            _context.LessonEleve.Remove(lessonEleve);
             await _context.SaveChangesAsync();
 
-            return matiere;
+            return lessonEleve;
         }
 
-        private bool MatiereExists(int id)
+        private bool LessonEleveExists(int id)
         {
-            return _context.Matiere.Any(e => e.Id == id);
+            return _context.LessonEleve.Any(e => e.Id == id);
         }
     }
 }

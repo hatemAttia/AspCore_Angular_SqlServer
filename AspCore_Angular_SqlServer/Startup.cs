@@ -61,9 +61,6 @@ namespace AspCore_Angular_SqlServer
 
             });
             services.AddScoped<IAuthenticateService, AuthenticationService>();
-
-
-
             services.AddSwaggerGen();
             services.AddControllersWithViews().AddNewtonsoftJson(options =>
              options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore)
@@ -84,9 +81,8 @@ namespace AspCore_Angular_SqlServer
             }
 
             app.UseRouting();
-
+            app.UseCors(options => options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
             app.UseAuthorization();
-
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();

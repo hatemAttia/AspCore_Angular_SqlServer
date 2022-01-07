@@ -24,7 +24,7 @@ namespace AspCore_Angular_SqlServer.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Section>>> GetSection()
         {
-            return await _context.Section.ToListAsync();
+            return await _context.Section.Include(x => x.Niveau).ThenInclude(x => x.Matiere).ThenInclude(x => x.Chapitre).ToListAsync();
         }
 
         // GET: api/Sections/5
@@ -79,8 +79,8 @@ namespace AspCore_Angular_SqlServer.Controllers
         [HttpPost]
         public async Task<ActionResult<Section>> PostSection(Section section)
         {
-            var  id  =  _context.Section.Count();
-            
+            var id = _context.Section.Max(e => e.Id);
+
             section.Id = id + 1;
              _context.Section.Add(section);
             try
