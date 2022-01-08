@@ -12,7 +12,6 @@ namespace AspCore_Angular_SqlServer.Models
 
         [Required]
         public string Email { get; set; }
-        [Required]
         public string Image { get; set; }
         [Required]
         public string Password { get; set; }

@@ -79,7 +79,18 @@ namespace AspCore_Angular_SqlServer.Controllers
         [HttpPost]
         public async Task<ActionResult<Enseignant>> PostEnseignant(Enseignant enseignant)
         {
-            var id = _context.Enseignant.Max(e => e.Id);
+
+            var id = 0;
+            if (_context.Enseignant.Count() <= 0)
+            {
+                id = 1;
+
+            }
+            else
+            {
+                id = _context.Enseignant.Max(e => e.Id);
+
+            }
 
             enseignant.Id = id + 1;
             _context.Enseignant.Add(enseignant);

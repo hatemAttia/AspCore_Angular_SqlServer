@@ -24,7 +24,7 @@ namespace AspCore_Angular_SqlServer.Models
         public string Descrption { get; set; }
         [Required]
         public float Prix { get; set; }
-        [Required]
+ 
         public string Image { get; set; }
         public int? ChapitreId { get; set; }
         public int? EnsegnantId { get; set; }

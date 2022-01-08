@@ -79,7 +79,19 @@ namespace AspCore_Angular_SqlServer.Controllers
         [HttpPost]
         public async Task<ActionResult<Chapitre>> PostChapitre(Chapitre chapitre)
         {
-            var id = _context.Chapitre.Max(e => e.Id);
+
+            var id = 0;
+            if (_context.Chapitre.Count() <= 0)
+            {
+                id = 1;
+
+            }
+            else
+            {
+                id = _context.Chapitre.Max(e => e.Id);
+
+            }
+
             chapitre.Id = id + 1;
             _context.Chapitre.Add(chapitre);
             try

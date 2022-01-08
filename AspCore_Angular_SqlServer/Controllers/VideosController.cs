@@ -79,8 +79,17 @@ namespace AspCore_Angular_SqlServer.Controllers
         [HttpPost]
         public async Task<ActionResult<Video>> PostVideo(Video video)
         {
-            var id = _context.Video.Max(e => e.Id);
+            var id = 0;
+            if (_context.Video.Count() <= 0)
+            {
+                id = 1;
 
+            }
+            else
+            {
+                id = _context.Video.Max(e => e.Id);
+
+            }
             video.Id = id + 1;
             _context.Video.Add(video);
             try

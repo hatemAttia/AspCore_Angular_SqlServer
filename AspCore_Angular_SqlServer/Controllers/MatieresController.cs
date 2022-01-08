@@ -79,8 +79,18 @@ namespace AspCore_Angular_SqlServer.Controllers
         [HttpPost]
         public async Task<ActionResult<Matiere>> PostMatiere(Matiere matiere)
         {
-            var id = _context.Matiere.Max(e => e.Id);
+            var id = 0;
+            if (_context.Matiere.Count() <= 0)
 
+            {
+                id = 1;
+
+            }
+            else
+            {
+                id = _context.Matiere.Max(e => e.Id);
+
+            }
 
             matiere.Id = id + 1;
             _context.Matiere.Add(matiere);

@@ -79,7 +79,18 @@ namespace AspCore_Angular_SqlServer.Controllers
         [HttpPost]
         public async Task<ActionResult<Section>> PostSection(Section section)
         {
-            var id = _context.Section.Max(e => e.Id);
+            var id = 0;
+            if  (_context.Section.Count() <= 0)
+            {
+                id = 1;
+
+            }
+            else
+            {
+                id = _context.Section.Max(e => e.Id);
+
+            }
+          
 
             section.Id = id + 1;
              _context.Section.Add(section);

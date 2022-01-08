@@ -85,9 +85,20 @@ namespace AspCore_Angular_SqlServer.Controllers
         [HttpPost]
         public async Task<ActionResult<Lesson>> PostLesson(Lesson lesson)
         {
+            var id = 0;
+            if (_context.Lesson.Count() <= 0)
+            {
+                id = 1;
 
-            var id = _context.Lesson.Max(e => e.Id);
+            }
+            else
+            {
+                id = _context.Lesson.Max(e => e.Id);
+
+            }
+
             lesson.Id = id + 1;
+            lesson.Image ="logo.png";
             _context.Lesson.Add(lesson);
             try
             {

@@ -84,8 +84,17 @@ namespace AspCore_Angular_SqlServer.Controllers
         [HttpPost]
         public async Task<ActionResult<Eleve>> PostEleve(Eleve eleve)
         {
+            var id = 0;
+            if (_context.Eleve.Count() <= 0)
+            {
+                id = _context.Eleve.Max(e => e.Id);
+            }
+            else
+            {
+                id = 1;
+            }
 
-            var id = _context.Eleve.Max(e => e.Id);
+            eleve.Image = "logo.png";
 
             eleve.Id = id + 1;
             _context.Eleve.Add(eleve);
