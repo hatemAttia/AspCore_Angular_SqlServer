@@ -19,12 +19,23 @@ namespace AspCore_Angular_SqlServer.Controllers
         [HttpPost]
         public IActionResult Post([FromBody] Eleve model)
         {
-            var eleve = _authenticateService.Authenticate(model.Email, model.password);
+            var eleve = _authenticateService.AuthenticateEleve(model.Email, model.password);
 
             if (eleve == null)
                 return BadRequest(new
                 { message = "Eleve or Password is incorrect" });
             return Ok(eleve);
+        }
+        [Route("/auth-admin")]
+        [HttpPost]
+        public IActionResult Post([FromBody] Auth model)
+        {
+            var admin = _authenticateService.AuthenticateAdmin(model.Email, model.Password);
+
+            if (admin == null)
+                return BadRequest(new
+                { message = "admin or Password is incorrect" });
+            return Ok(admin);
         }
     }
 }

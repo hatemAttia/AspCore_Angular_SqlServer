@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AspCore_Angular_SqlServer.Migrations
 {
     [DbContext(typeof(ElearningContext))]
-    [Migration("20220102111847_MySeconde1")]
-    partial class MySeconde1
+    [Migration("20220108123016_My8")]
+    partial class My8
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -21,16 +21,57 @@ namespace AspCore_Angular_SqlServer.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("AspCore_Angular_SqlServer.Models.Admin", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Image")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Nom")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Prenom")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Tel")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Token")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Admin");
+                });
+
             modelBuilder.Entity("AspCore_Angular_SqlServer.Models.Chapitre", b =>
                 {
                     b.Property<int>("Id")
                         .HasColumnType("int");
 
                     b.Property<int?>("MatiereId")
+                        .IsRequired()
                         .HasColumnName("matiereId")
                         .HasColumnType("int");
 
                     b.Property<string>("Title")
+                        .IsRequired()
                         .HasColumnName("title")
                         .HasColumnType("nchar(200)")
                         .IsFixedLength(true)
@@ -49,6 +90,7 @@ namespace AspCore_Angular_SqlServer.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Description")
+                        .IsRequired()
                         .HasColumnName("description")
                         .HasColumnType("text");
 
@@ -57,12 +99,14 @@ namespace AspCore_Angular_SqlServer.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Title")
+                        .IsRequired()
                         .HasColumnName("title")
                         .HasColumnType("varchar(200)")
                         .HasMaxLength(200)
                         .IsUnicode(false);
 
                     b.Property<string>("Url")
+                        .IsRequired()
                         .HasColumnName("url")
                         .HasColumnType("text");
 
@@ -79,6 +123,7 @@ namespace AspCore_Angular_SqlServer.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Email")
+                        .IsRequired()
                         .HasColumnName("email")
                         .HasColumnType("varchar(50)")
                         .HasMaxLength(50)
@@ -91,24 +136,28 @@ namespace AspCore_Angular_SqlServer.Migrations
                         .IsUnicode(false);
 
                     b.Property<string>("Niveau")
+                        .IsRequired()
                         .HasColumnName("niveau")
                         .HasColumnType("varchar(50)")
                         .HasMaxLength(50)
                         .IsUnicode(false);
 
                     b.Property<string>("Nom")
+                        .IsRequired()
                         .HasColumnName("nom")
                         .HasColumnType("varchar(50)")
                         .HasMaxLength(50)
                         .IsUnicode(false);
 
                     b.Property<string>("Prenom")
+                        .IsRequired()
                         .HasColumnName("prenom")
                         .HasColumnType("varchar(50)")
                         .HasMaxLength(50)
                         .IsUnicode(false);
 
                     b.Property<int?>("Tel")
+                        .IsRequired()
                         .HasColumnName("tel")
                         .HasColumnType("int");
 
@@ -116,6 +165,7 @@ namespace AspCore_Angular_SqlServer.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("password")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -129,36 +179,42 @@ namespace AspCore_Angular_SqlServer.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Email")
+                        .IsRequired()
                         .HasColumnName("email")
                         .HasColumnType("varchar(200)")
                         .HasMaxLength(200)
                         .IsUnicode(false);
 
                     b.Property<string>("Image")
+                        .IsRequired()
                         .HasColumnName("image")
                         .HasColumnType("varchar(200)")
                         .HasMaxLength(200)
                         .IsUnicode(false);
 
                     b.Property<string>("Nom")
+                        .IsRequired()
                         .HasColumnName("nom")
                         .HasColumnType("varchar(200)")
                         .HasMaxLength(200)
                         .IsUnicode(false);
 
                     b.Property<string>("Prenom")
+                        .IsRequired()
                         .HasColumnName("prenom")
                         .HasColumnType("varchar(200)")
                         .HasMaxLength(200)
                         .IsUnicode(false);
 
                     b.Property<string>("Specialite")
+                        .IsRequired()
                         .HasColumnName("specialite")
                         .HasColumnType("varchar(200)")
                         .HasMaxLength(200)
                         .IsUnicode(false);
 
                     b.Property<int?>("Tel")
+                        .IsRequired()
                         .HasColumnName("tel")
                         .HasColumnType("int");
 
@@ -177,6 +233,7 @@ namespace AspCore_Angular_SqlServer.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Descrption")
+                        .IsRequired()
                         .HasColumnName("descrption")
                         .HasColumnType("text");
 
@@ -184,7 +241,15 @@ namespace AspCore_Angular_SqlServer.Migrations
                         .HasColumnName("ensegnantId")
                         .HasColumnType("int");
 
+                    b.Property<string>("Image")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<float>("Prix")
+                        .HasColumnType("real");
+
                     b.Property<string>("Titre")
+                        .IsRequired()
                         .HasColumnName("titre")
                         .HasColumnType("varchar(200)")
                         .HasMaxLength(200)
@@ -231,6 +296,7 @@ namespace AspCore_Angular_SqlServer.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Title")
+                        .IsRequired()
                         .HasColumnName("title")
                         .HasColumnType("nchar(200)")
                         .IsFixedLength(true)
@@ -253,6 +319,7 @@ namespace AspCore_Angular_SqlServer.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Title")
+                        .IsRequired()
                         .HasColumnName("title")
                         .HasColumnType("varchar(200)")
                         .HasMaxLength(200)
@@ -271,6 +338,7 @@ namespace AspCore_Angular_SqlServer.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Title")
+                        .IsRequired()
                         .HasColumnName("title")
                         .HasColumnType("varchar(200)")
                         .HasMaxLength(200)
@@ -287,6 +355,7 @@ namespace AspCore_Angular_SqlServer.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Descrption")
+                        .IsRequired()
                         .HasColumnName("descrption")
                         .HasColumnType("text");
 
@@ -295,12 +364,14 @@ namespace AspCore_Angular_SqlServer.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Title")
+                        .IsRequired()
                         .HasColumnName("title")
                         .HasColumnType("varchar(200)")
                         .HasMaxLength(200)
                         .IsUnicode(false);
 
                     b.Property<string>("Url")
+                        .IsRequired()
                         .HasColumnName("url")
                         .HasColumnType("text");
 
@@ -316,7 +387,9 @@ namespace AspCore_Angular_SqlServer.Migrations
                     b.HasOne("AspCore_Angular_SqlServer.Models.Matiere", "Matiere")
                         .WithMany("Chapitre")
                         .HasForeignKey("MatiereId")
-                        .HasConstraintName("FK_chapitre_ToTable_1");
+                        .HasConstraintName("FK_chapitre_ToTable_1")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("AspCore_Angular_SqlServer.Models.Document", b =>

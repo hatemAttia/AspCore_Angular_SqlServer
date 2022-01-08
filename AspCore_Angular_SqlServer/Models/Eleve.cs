@@ -17,19 +17,20 @@ namespace AspCore_Angular_SqlServer.Models
         }
      
         public int Id { get; set; }
-       
+        [Required]
         public string Nom { get; set; }
-     
+        [Required]
         public string Prenom { get; set; }
+        [Required]
         public string Niveau { get; set; }
-        
 
+        [Required]
         public string password { get; set; }
 
         public string Token { get; set; }
-
+        [Required]
         public int? Tel { get; set; }
-
+        [Required]
         public string Email { get; set; }
 
        /* [Display(Name="choose your photo")]

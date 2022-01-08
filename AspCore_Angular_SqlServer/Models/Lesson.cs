@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 // Code scaffolded by EF Core assumes nullable reference types (NRTs) are not used or disabled.
 // If you have enabled NRTs for your project, then un-comment the following line:
@@ -17,8 +18,14 @@ namespace AspCore_Angular_SqlServer.Models
         }
 
         public int Id { get; set; }
+        [Required]
         public string Titre { get; set; }
+        [Required]
         public string Descrption { get; set; }
+        [Required]
+        public float Prix { get; set; }
+        [Required]
+        public string Image { get; set; }
         public int? ChapitreId { get; set; }
         public int? EnsegnantId { get; set; }
 
