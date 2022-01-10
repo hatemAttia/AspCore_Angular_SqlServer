@@ -83,7 +83,7 @@ namespace AspCore_Angular_SqlServer.Controllers
             var id = 0;
             if (_context.Chapitre.Count() <= 0)
             {
-                id = 1;
+                id = 0;
 
             }
             else

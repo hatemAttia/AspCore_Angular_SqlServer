@@ -37,7 +37,7 @@ namespace AspCore_Angular_SqlServer.Controllers
         public async Task<ActionResult<Eleve>> GetEleve(int id)
         {
             var eleve = await _context.Eleve.FindAsync(id);
-
+           
             if (eleve == null)
             {
                 return NotFound();
@@ -91,7 +91,7 @@ namespace AspCore_Angular_SqlServer.Controllers
             }
             else
             {
-                id = 1;
+                id = 0;
             }
 
             eleve.Image = "logo.png";

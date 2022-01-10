@@ -26,7 +26,7 @@ namespace AspCore_Angular_SqlServer.Models
         public int? Tel { get; set; }
         [Required]
         public string Specialite { get; set; }
-        [Required]
+   
         public string Image { get; set; }
 
         public virtual ICollection<Lesson> Lesson { get; set; }

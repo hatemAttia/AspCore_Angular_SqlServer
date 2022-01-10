@@ -83,7 +83,7 @@ namespace AspCore_Angular_SqlServer.Controllers
             if (_context.Matiere.Count() <= 0)
 
             {
-                id = 1;
+                id = 0;
 
             }
             else

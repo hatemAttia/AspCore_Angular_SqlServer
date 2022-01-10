@@ -36,8 +36,8 @@ namespace AspCore_Angular_SqlServer.Controllers
         public async Task<ActionResult<Lesson>> GetLesson(int id)
         {
             var lesson = await _context.Lesson.FindAsync(id);
-            var teacher = await _context.Enseignant.FindAsync(lesson.EnsegnantId);
-            var chapitre = await _context.Chapitre.FindAsync(lesson.ChapitreId);
+            //var teacher = await _context.Enseignant.FindAsync(lesson.EnsegnantId);
+            //var chapitre = await _context.Chapitre.FindAsync(lesson.ChapitreId);
             lesson.Video = null;
             if (lesson == null)
             {
@@ -88,7 +88,7 @@ namespace AspCore_Angular_SqlServer.Controllers
             var id = 0;
             if (_context.Lesson.Count() <= 0)
             {
-                id = 1;
+                id = 0;
 
             }
             else
@@ -123,6 +123,9 @@ namespace AspCore_Angular_SqlServer.Controllers
         public async Task<ActionResult<Lesson>> DeleteLesson(int id)
         {
             var lesson = await _context.Lesson.FindAsync(id);
+            var teacher = await _context.Enseignant.FindAsync(lesson.EnsegnantId);
+            var chapitre = await _context.Chapitre.FindAsync(lesson.ChapitreId);
+
             if (lesson == null)
             {
                 return NotFound();
