@@ -24,14 +24,21 @@ namespace AspCore_Angular_SqlServer.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Section>>> GetSection()
         {
-            return await _context.Section.Include(x => x.Niveau).ThenInclude(x => x.Matiere).ThenInclude(x => x.Chapitre).ToListAsync();
+            return await _context.Section.Include(x => x.Niveau)
+                                            .ThenInclude(x => x.Matiere)
+                                            .ThenInclude(x => x.Chapitre)
+                                            .ToListAsync();
         }
 
         // GET: api/Sections/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Section>> GetSection(int id)
         {
-            var section = await _context.Section.FindAsync(id);
+            var section = await _context.Section.Include(x => x.Niveau)
+                                          .ThenInclude(x => x.Matiere)
+                                          .ThenInclude(x => x.Chapitre)
+                                          .ThenInclude(x => x.Lesson)
+                                          .SingleAsync(x => x.Id == id);
 
             if (section == null)
             {

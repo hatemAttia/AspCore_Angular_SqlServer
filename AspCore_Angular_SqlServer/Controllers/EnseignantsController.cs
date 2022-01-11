@@ -31,7 +31,12 @@ namespace AspCore_Angular_SqlServer.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Enseignant>> GetEnseignant(int id)   
         {
-            var enseignant = await _context.Enseignant.Include(x => x.Lesson).SingleAsync(x=>x.Id==id);
+            var enseignant = await _context.Enseignant.
+                                            Include(x => x.Lesson).
+                                            ThenInclude(x => x.Video).
+                                            Include(x => x.Lesson).
+                                            ThenInclude(x => x.Document).
+                                            SingleAsync(x=>x.Id==id);
 
             if (enseignant == null)
             {

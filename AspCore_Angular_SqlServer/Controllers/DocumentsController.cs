@@ -24,10 +24,11 @@ namespace AspCore_Angular_SqlServer.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Document>>> GetDocument()
         {
-            return await _context.Document.ToListAsync();
+            return await _context.Document.Include(x => x.Lesson)
+                                            .ToListAsync();
         }
 
-        // GET: api/Documents/5
+        // GET: api/Documents/5 
         [HttpGet("{id}")]
         public async Task<ActionResult<Document>> GetDocument(int id)
         {

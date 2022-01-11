@@ -36,7 +36,22 @@ namespace AspCore_Angular_SqlServer.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Eleve>> GetEleve(int id)
         {
-            var eleve = await _context.Eleve.FindAsync(id);
+            var eleve = await _context.Eleve.Include(x => x.LessonEleve)
+                                                .ThenInclude(x => x.Lesson)
+                                                .ThenInclude(x => x.Ensegnant)
+                                                .Include(x => x.LessonEleve)
+                                                .ThenInclude(x => x.Lesson)
+                                                .ThenInclude(x => x.Chapitre)
+                                                .ThenInclude(x => x.Matiere)
+                                                .ThenInclude(x => x.Niveau)
+                                                .ThenInclude(x => x.Section)
+                                                .Include(x => x.LessonEleve)
+                                                .ThenInclude(x => x.Lesson)
+                                                .ThenInclude(x => x.Document)
+                                                .Include(x => x.LessonEleve)
+                                                .ThenInclude(x => x.Lesson)
+                                                .ThenInclude(x => x.Video)
+                                                .SingleAsync(x => x.Id == id);
            
             if (eleve == null)
             {

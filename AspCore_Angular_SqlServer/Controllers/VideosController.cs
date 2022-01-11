@@ -24,7 +24,8 @@ namespace AspCore_Angular_SqlServer.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Video>>> GetVideo()
         {
-            return await _context.Video.ToListAsync();
+            return await _context.Video.Include(x => x.Lesson)
+                                        .ToListAsync();
         }
 
         // GET: api/Videos/5

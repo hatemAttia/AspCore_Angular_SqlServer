@@ -24,14 +24,22 @@ namespace AspCore_Angular_SqlServer.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Matiere>>> GetMatiere()
         {
-            return await _context.Matiere.ToListAsync();
+            return await _context.Matiere
+                                .Include(x => x.Chapitre)
+                                .ThenInclude(x => x.Lesson)
+                                .ToListAsync();
         }
 
         // GET: api/Matieres/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Matiere>> GetMatiere(int id)
         {
-            var matiere = await _context.Matiere.FindAsync(id);
+            var matiere = await _context.Matiere
+                .Include(x => x.Niveau)
+                .ThenInclude(x => x.Section)
+                .Include(x => x.Chapitre)
+                .ThenInclude(x => x.Lesson)
+                .SingleAsync(x => x.Id == id);
 
             if (matiere == null)
             {

@@ -25,7 +25,11 @@ namespace AspCore_Angular_SqlServer.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Lesson>>> GetLesson()
         {
-            var lesson = await _context.Lesson.Include(x=>x.Ensegnant).Include(x => x.LessonEleve).Include(x => x.Video).Include(x => x.Document).Include(x => x.Chapitre).ToListAsync();
+            var lesson = await _context.Lesson.Include(x=>x.Ensegnant).
+                                                Include(x => x.LessonEleve).
+                                                Include(x => x.Video).
+                                                Include(x => x.Document).
+                                                Include(x => x.Chapitre).ToListAsync();
          
             return lesson;
         }
@@ -35,9 +39,11 @@ namespace AspCore_Angular_SqlServer.Controllers
        [HttpGet("{id}")]
         public async Task<ActionResult<Lesson>> GetLesson(int id)
         {
-            var lesson = await _context.Lesson.FindAsync(id);
-            //var teacher = await _context.Enseignant.FindAsync(lesson.EnsegnantId);
-            //var chapitre = await _context.Chapitre.FindAsync(lesson.ChapitreId);
+            var lesson = await _context.Lesson.Include(x => x.Document)
+                                                .Include(x => x.Video)
+                                                .Include(x => x.LessonEleve)
+                                                .ThenInclude(x => x.Eleve)
+                                                .SingleAsync(x => x.Id == id);
             lesson.Video = null;
             if (lesson == null)
             {
