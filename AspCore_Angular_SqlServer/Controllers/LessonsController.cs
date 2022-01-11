@@ -140,5 +140,22 @@ namespace AspCore_Angular_SqlServer.Controllers
         {
             return _context.Lesson.Any(e => e.Id == id);
         }
+
+
+        //[Route("/lesson-section")]
+        //[HttpGet]
+        //public async Task<ActionResult<IEnumerable<Lesson>>> GetLessonByChapitre(int lessonId,int chapitreId)
+        //{
+        //    var lesson = await _context.Lesson.FindAsync(chapitreId);
+        //    //var teacher = await _context.Enseignant.FindAsync(lesson.EnsegnantId);
+        //    //var chapitre = await _context.Chapitre.FindAsync(lesson.ChapitreId);
+        //    lesson.Video = null;
+        //    if (lesson == null)
+        //    {
+        //        return NotFound();
+        //    }
+
+        //    return lesson;
+        //}
     }
 }

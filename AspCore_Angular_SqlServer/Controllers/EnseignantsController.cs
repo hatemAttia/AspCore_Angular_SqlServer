@@ -24,14 +24,14 @@ namespace AspCore_Angular_SqlServer.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Enseignant>>> GetEnseignant()
         {
-            return await _context.Enseignant.ToListAsync();
+            return await _context.Enseignant.Include(x => x.Lesson).ToListAsync();
         }
 
         // GET: api/Enseignants/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Enseignant>> GetEnseignant(int id)
+        public async Task<ActionResult<Enseignant>> GetEnseignant(int id)   
         {
-            var enseignant = await _context.Enseignant.FindAsync(id);
+            var enseignant = await _context.Enseignant.Include(x => x.Lesson).SingleAsync(x=>x.Id==id);
 
             if (enseignant == null)
             {

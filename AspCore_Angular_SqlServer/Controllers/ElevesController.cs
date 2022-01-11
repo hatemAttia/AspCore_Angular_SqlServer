@@ -87,11 +87,13 @@ namespace AspCore_Angular_SqlServer.Controllers
             var id = 0;
             if (_context.Eleve.Count() <= 0)
             {
-                id = _context.Eleve.Max(e => e.Id);
+                id = 0;
+
             }
             else
             {
-                id = 0;
+                id = _context.Eleve.Max(e => e.Id);
+
             }
 
             eleve.Image = "logo.png";
