@@ -25,6 +25,7 @@ namespace AspCore_Angular_SqlServer.Controllers
         public async Task<ActionResult<IEnumerable<Matiere>>> GetMatiere()
         {
             return await _context.Matiere
+                                .Include(x => x.Niveau)
                                 .Include(x => x.Chapitre)
                                 .ThenInclude(x => x.Lesson)
                                 .ToListAsync();

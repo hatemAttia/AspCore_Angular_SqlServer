@@ -27,6 +27,7 @@ namespace AspCore_Angular_SqlServer.Controllers
             return await _context.Niveau.Include(x => x.Matiere)
                                           .ThenInclude(x => x.Chapitre)
                                           .ThenInclude(x => x.Lesson)
+                                          .Include(x => x.Section)
                                           .ToListAsync();
         }
 

@@ -24,7 +24,16 @@ namespace AspCore_Angular_SqlServer.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<LessonEleve>>> GetLessonEleve()
         {
-            return await _context.LessonEleve.ToListAsync();
+            return await _context.LessonEleve.Include(x => x.Eleve)
+                                             .Include(x => x.Lesson)
+                                             .ThenInclude(x => x.Chapitre)
+                                             .Include(x => x.Lesson)
+                                             .ThenInclude(x => x.Ensegnant)
+                                             .Include(x => x.Lesson)
+                                             .ThenInclude(x => x.Video)
+                                             .Include(x => x.Lesson)
+                                             .ThenInclude(x => x.Document)
+                                             .ToListAsync();
         }
 
         // GET: api/LessonEleves1/5
